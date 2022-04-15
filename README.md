@@ -1,6 +1,6 @@
 # 2jin's it world
 
-![CI](https://github.com/22jin)
+![CI](https://github.com/22JIN)
 
 Welcome to my blog!
 ## What it does?
