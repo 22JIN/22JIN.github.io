@@ -1,16 +1,9 @@
 # SW EXPERT ACADEMY
 
-
-```
-{% raw %}{% include list.liquid all=true %}{% endraw %}
-
-{% include list.liquid all=true %}
-```
-
 {% include list.liquid all=true %}
 
 
-#테스트 시 유의사항
+# 테스트 시 유의사항
 
 freopen("input.txt", 'r', stdin)
 -> 입력을 stdin 대신 "input.txt"에서 받아온다
