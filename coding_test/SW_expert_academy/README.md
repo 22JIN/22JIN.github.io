@@ -1,10 +1,6 @@
 # SW EXPERT ACADEMY
 
-```
-{% raw %}{% include list.liquid all=true %}{% endraw %}
-
 {% include list.liquid all=true %}
-```
 
 
 ## 테스트 시 유의사항
