@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 _site
 .DS_Store
 .jekyll
@@ -8,3 +9,36 @@ Gemfile
 Gemfile.lock
 node_modules
 package.json
+=======
+# jekyll
+.jekyll-metadata
+_site
+.sass-cache
+.jekyll-cache
+
+
+# bundler
+*.gem
+Gemfile.lock
+
+
+# python
+*.whl
+
+
+# npm
+node_modules
+package-lock.json
+
+
+# _sass
+_sass/@primer/css/**/*.md
+
+
+# lighthouse
+*.report.html
+
+
+# action
+action.changelog.md
+>>>>>>> e897694cd7714bfa831a0ade5c8d7c3741a2ab0a
