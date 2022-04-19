@@ -4,6 +4,19 @@
 
 using namespace std;
 
+//find Max from index day
+int findMax(int* cost, int index, int day){
+    int max = 0;
+    int max_index = 0;
+    for(int i=index; i<day; i++){
+        if(cost[i] > max){
+            max = cost[i];
+            max_index = i;
+        }
+    }
+    return max_index;
+}
+
 int main(int argc, char** argv)
 {
 	int test_case = 0;
@@ -18,55 +31,39 @@ int main(int argc, char** argv)
         cin >> day;
         cout << "day: " << day << endl;
         
-        int nums[day][2];
-        for(int i=0; i<day; i++){
-            for(int j=0; j<2; j++)
-                nums[i][j] = 0;
-        }
-        int max = 0;
-        for(int i=0; i<day; i++){
-            cin >> nums[i][0];
-            if(nums[i][0] > max){
-                max = nums[i][0];
-                nums[i][1] = i;
-            }
-        }
-        for(int i=0; i<day; i++){
-            for(int j=0; j<2; j++){
-                cout << i << "," << j << ": " << nums[i][j] << endl;
-            }
-        }
-        cout << endl;
+        int nums[day];
 
-        int tmp = 0;
+        for(int i=0; i<day; i++)
+            cin >> nums[i];
+            
+        int max_day = 0;
+        int max_day1 = 0;
+        
         int sum = 0;
-        int index = 0;
-        for(int i=0; i<day; i++){
-            if(nums[i][1] != 0){
-                if(int k=i; k<day; k++){
-                    if(nums[i][1] != 0){
-                     index = i;
-                    }
+        int count = 0;
+        while(1){
+            count ++;
+            if(count == 10)
+                break;
 
-                    if(index == 0){
-                        sum = 0;
-                        for(int j=index; j<tmp; j++){
-                            sum += nums[j][0];
-                        }
-                        sum = nums[i][0]*(i-index) - sum;
-                    }
-
-                    if
-                }
-                tmp = i;
-
-                sum = 0;
-                for(int j=index; j<tmp; j++){
-                    sum += nums[j][0];
-                }
-                sum = nums[i][0]*(i-index) - sum;
-                index = i;
+            int benefit = 0;
+            max_day1 = findMax(nums, max_day, day);
+            cout << "maxday1: " << max_day1 << ",maxday: " << max_day << endl;
+            
+            if(max_day == max_day1 )
+                break;
+            
+            for(int i=0; i<(day-max_day1); i++){
+                benefit =+ nums[i];
             }
+            cout << "benefit: " << benefit << endl;
+            benefit = nums[max_day1]*(max_day1-max_day-1) - benefit; 
+            sum =+ benefit;
+
+            if(max_day1 == day-1 )
+                break;
+            
+            
         }
 
         cout << "#" << test_case << " " << sum << endl;
