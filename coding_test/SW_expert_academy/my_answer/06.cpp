@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 using namespace std;
-
+int nums[1000000]={0,};
 
 int main(int argc, char** argv)
 {
@@ -15,22 +15,23 @@ int main(int argc, char** argv)
 	{
         int day = 0;
         cin >> day;        
-        int nums[day];
+        
         
         for(int i=0; i<day; i++)
             cin >> nums[i];
         
         int max = nums[day-1];
-        int sum = 0;
+        long long sum = 0;
         for(int i=day-2; i>=0; i--){
-            if(max > nums[i])
+            if(max >= nums[i])
                 sum += max-nums[i];
-            else if(max < nums[i])
+            else
                 max = nums[i];
-           // cout << "nums[" << i<< "]: " << nums[i] << ", max: " << max << ", sum: " << sum << endl;
         }
   
         cout << "#" << test_case << " " << sum << endl;
+        for(int i=0; i<day; i++)
+            nums[i]=0;
 	}
 	return 0;
 }
@@ -62,17 +63,16 @@ int main(int argc, char** argv)
 	{
         int day = 0;
         cin >> day;        
-        int nums[day];
 
         for(int i=0; i<day; i++)
             cin >> nums[i];
             
         int start_day = 0;
         int max_day = 0;
-        int sum = 0;
+        long long sum = 0;
 
         while(1){
-            int benefit = 0;
+            long long benefit = 0;
             max_day = findMax(nums, start_day, day);
 
             //add price between start day and max day
