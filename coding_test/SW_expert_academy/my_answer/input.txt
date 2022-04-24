@@ -1,5 +1,4 @@
-1
 3
-A 10
-B 7
-C 5 
+oxoxoxoxoxoxoxo
+x
+xxxxxxxx
