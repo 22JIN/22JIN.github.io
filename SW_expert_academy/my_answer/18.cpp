@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int[] findMax(string str, int start_index, int end_index){
+int* findMax(string str, int start_index, int end_index){
     int max = 0;
     int index_max[2] = {0,};
     for(int i=start_index; i<end_index; i++){
@@ -19,7 +19,7 @@ int[] findMax(string str, int start_index, int end_index){
     return index_max;
 }
 
-int[] findMin(string str, int start_index, int end_index){
+int* findMin(string str, int start_index, int end_index){
     int min = 9;
     int index_min[2] = {0,};
     for(int i=start_index; i<end_index; i++){
@@ -52,10 +52,9 @@ int main(int argc, char** argv)
         int len = num_str.length(); 
 
         char tmp;
-        int index[2] = {0,};
         string num_min = num_str;
         for(int i=0; i<len; i++){
-            int index[2] = findMin(num_min, i, len);
+            int* index = findMin(num_min, i, len);
             if(num_min[index[0]] == 0)
                 continue;
 
@@ -69,16 +68,15 @@ int main(int argc, char** argv)
             }
         }
         
-        int index_max = 0;
         string num_max = num_str;
         for(int i=0; i<len; i++){
-            index_max = findMax(num_max, i, len);
-            if(index_max <= i)
+            int* index = findMax(num_max, i, len);
+            if(index[0] <= i)
                 continue;
             else{
                 tmp = num_max[i];
-                num_max[i] = num_max[index_max];
-                num_max[index_max] = tmp;
+                num_max[i] = num_max[index[0]];
+                num_max[index[0]] = tmp;
                 break;
             }
         }
