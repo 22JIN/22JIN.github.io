@@ -43,43 +43,85 @@ int main(int argc, char** argv)
         int len = num_str.length(); 
 
         char tmp;
-        int index_min = 0;
-        string num_min = num_str;
-        int i=0;
-
-        index_min = findMin(num_min, i, len);
-        cout << "i: " << i << ", index_min: " << index_min << endl;
-        int start = 0;
-        if((int)num_min[index_min] == '0')
-            start = 1;
-        for(int j=start; j<index_min; j++){
-            cout << "j: " << j << ", num[index_min]: " << num_min[index_min] << ", num[j]: " << num_min[j]  << endl;
-            if((int)num_min[index_min] < (int)num_min[j]){
-                i=j;
-                break;
-            }
-            i=index_min;
-        }
-
-         tmp = num_min[i];
-        num_min[i] = num_min[index_min];
-        num_min[index_min] = tmp;
-
         int index_max = 0;
         string num_max = num_str;
-        i = 0;
-        index_max = findMax(num_max, i, len);
+        int chg = 0;
+        index_max = findMax(num_max, chg, len);
                 
         for(int j=0; j<=index_max; j++){
             if((int)num_max[index_max] > (int)num_max[j]){
-                i=j;
+                chg=j;
                 break;
             }
-            i=index_max;
+            chg=index_max;
         }        
-        tmp = num_max[i];
-        num_max[i] = num_max[index_max];
+        tmp = num_max[chg];
+        num_max[chg] = num_max[index_max];
         num_max[index_max] = tmp;
+
+        
+        int index_min = 0;
+        string num_min = num_str;
+        int start = 1;
+
+        //example: 1000
+        for(int i=1; i<len; i++){
+            if((int)num_min[index_min] != '0'){
+                start = 0;
+                break;
+            }
+        }
+
+        
+        for(int i=0; i<len; i++){
+            if(start == 1)
+                break;
+
+            index_min = findMin(num_min, i, len);
+           
+            //cout << "i: " << i << ", index_min: " << index_min << endl;
+            if(index_min == i)
+                continue;
+            if((int)num_min[index_min] == '0'){
+                int index_min2 = index_min;
+                int min = 1;
+                for(int j=i; j<index_min; j++){
+                    if((int)num_min[j] == '0')
+                        continue;
+                    if((int)num_min[j]-'0' <= min){
+                        min = (int)num_min[j] -'0';
+                        index_min2 = j;
+                    }
+                }
+                if((int)num_min[index_min2] == '0')
+                    start = 1;
+                else
+                    index_min = index_min2;
+                
+            }
+            
+            for(int j=start; j<=index_min; j++){
+                //cout << "j: " << j << ", num[index_min]: " << num_min[index_min] << ", num[j]: " << num_min[j]  << endl;
+                if((int)num_min[index_min] < (int)num_min[j]){
+                    i=j;
+                    break;
+                }
+                //cout << "[for1] i: " << i << ", index_min: " << index_min << endl;
+                i=index_min;
+                //cout << "[for2] i: " << i << ", index_min: " << index_min << endl;
+            }
+
+            if(index_min == i)
+                continue;
+            
+            tmp = num_min[i];
+            num_min[i] = num_min[index_min];
+            num_min[index_min] = tmp;
+            break;
+        
+        }
+
+        
         
         cout << "#" << test_case << " " << num_min << " " << num_max << endl;
 	}
